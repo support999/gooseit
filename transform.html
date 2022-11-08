@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+
+    <!-- Fontawesome Link -->
+    <link rel="stylesheet" href="./assets/fontawesome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <title>Bedrock Tool</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light shadow shadow-sm py-1 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 fw-bold py-0" href="#">
+                Dev-Environment
+            </a>
+            <div class="w-40">
+                <input type="search" class="form-control form-control-sm" placeholder="Search">
+            </div>
+            <div class="d-flex">
+                <div type="button" class="position-relative d-flex justify-content-center align-items-center notification-bell me-2">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New alerts</span>
+                    </span>
+                </div>
+                <a class="btn btn-sm text-dark nav-plus-btn mx-2" href="workflow.html"><i class="fa-solid fa-plus text-light"></i></a>
+                <button class="btn btn-outline-secondary btn-sm d-flex justify-content-center align-items-center" type="submit">
+                    <svg width="15" height="16" viewBox="0 0 15 16" fill="none" class="me-2">
+                        <path d="M9.04667 12.7134C9.04667 13.12 8.77998 13.6534 8.43998 13.86L7.5 14.4667C6.62667 15.0067 5.41333 14.4 5.41333 13.32V9.75336C5.41333 9.28002 5.14667 8.67336 4.87333 8.34003L2.31331 5.64669C1.97331 5.30669 1.70667 4.7067 1.70667 4.30003V2.75336C1.70667 1.94669 2.31334 1.34003 3.05334 1.34003H11.9467C12.6867 1.34003 13.2933 1.94669 13.2933 2.68669V4.16669C13.2933 4.70669 12.9533 5.38003 12.62 5.71336" stroke="#4C4C4C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>Filter</button>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sidenav-container py-4 px-3">
+                    <div class="card sidenav-card border-0 px-3 py-2">
+                        <div class="sidebar-icon icon-success">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="font-25px fw-600 mt-3 mb-2">20</p>
+                        <p class="text-gray font-14px mb-0">Number of Jobs</p>
+                    </div>
+
+                    <div class="card sidenav-card border-0 px-3 py-2 mt-3">
+                        <div class="sidebar-icon icon-secondary">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <p class="font-25px fw-600 mt-3 mb-2">15</p>
+                        <p class="text-gray font-14px mb-0">Schedule</p>
+                    </div>
+
+                    <div class="card sidenav-card border-0 px-3 py-2 mt-3">
+                        <div class="sidebar-icon icon-warning">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <p class="font-25px fw-600 mt-3 mb-2">10</p>
+                        <p class="text-gray font-14px mb-0">Running</p>
+                    </div>
+
+                    <div class="card sidenav-card border-0 px-3 py-2 mt-3">
+                        <div class="sidebar-icon icon-danger">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                        <p class="font-25px fw-600 mt-3 mb-2">12</p>
+                        <p class="text-gray font-14px mb-0">Failures</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <table class="table align-middle font-12px line-height-16px text-dark-gray">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">Job</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Progress</th>
+                            <th scope="col">Is Scheduled</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fa-regular fa-folder font-16px"></i> <span class="ms-1">Outpatient</span></td>
+                            <td><button class="btn btn-sm btn-warning-light font-12px">Pending</button></td>
+                            <td>
+                                <div class="prorgess-container">
+                                    <div class="progress job-progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <span class="d-inline-block w-40px">40%</span>
+                                <button class="btn btn-sm btn-success-light font-12px btn-"><i class="fa-solid fa-arrow-up"></i> 4%</button>
+                            </td>
+                            <td>
+                                <i class="fa-regular fa-square-check font-20px"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-folder font-16px"></i> <span class="ms-1">Inpatient</span></td>
+                            <td><button class="btn btn-sm btn-warning-light font-12px">Pending</button></td>
+                            <td>
+                                <div class="prorgess-container">
+                                    <div class="progress job-progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 57%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <span class="d-inline-block w-40px">57%</span>
+                                <button class="btn btn-sm btn-danger-light font-12px btn-"><i class="fa-solid fa-arrow-down"></i> 8%</button>
+                            </td>
+                            <td>
+                                <i class="fa-regular fa-square-check font-20px"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-folder font-16px"></i> <span class="ms-1">Emergency Attendance</span></td>
+                            <td><button class="btn btn-sm btn-success-light font-12px">Verified</button></td>
+                            <td>
+                                <div class="prorgess-container">
+                                    <div class="progress job-progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <span class="d-inline-block w-40px">100%</span>
+                                <button class="btn btn-sm btn-success-light font-12px btn-"><i class="fa-solid fa-arrow-down"></i> 19%</button>
+                            </td>
+                            <td>
+                                <i class="fa-regular fa-square-check font-20px"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-folder font-16px"></i> <span class="ms-1">Maternity</span></td>
+                            <td><button class="btn btn-sm btn-light-light font-12px">Unverified</button></td>
+                            <td>
+                                <span>No Ratings Available</span>
+                            </td>
+                            <td>
+                                <i class="fa-regular fa-square font-20px"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-folder font-16px"></i> <span class="ms-1">Waiting List</span></td>
+                            <td><button class="btn btn-sm btn-success-light font-12px">Verfied</button></td>
+                            <td>
+                                <div class="prorgess-container">
+                                    <div class="progress job-progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <span class="d-inline-block w-40px">50%</span>
+                                <button class="btn btn-sm btn-danger-light font-12px btn-"><i class="fa-solid fa-arrow-down"></i> 6%</button>
+                            </td>
+                            <td>
+                                <i class="fa-regular fa-square-check font-20px"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <nav aria-label="Page navigation example" class="mt-5">
+                    <ul class="pagination font-12px">
+                        <li class="page-item"><a class="page-link text-secondary" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/jQuery/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>

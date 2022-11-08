@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+
+    <!-- Fontawesome Link -->
+    <link rel="stylesheet" href="./assets/fontawesome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <title>Monitor</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light py-1 shadow shadow-sm sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 fw-bold py-0" href="#">
+                Dev-Environment 1
+            </a>
+            <div class="d-flex">
+                <button class="btn btn-sm btn-success-light" id="addWorkflow"  data-bs-toggle="modal" data-bs-target="#addWorkflowModal"><i class="fa-solid fa-plus"></i><span class="ms-1">Add</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="main-section">
+        <div class="container-fluid py-2 font-12px">
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    
+                    <table class="table table-hover font-12px vertical-align-middle table-">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th scope="col">ID</th>
+                                <th scope="col">Pipeline</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Last Run Date</th>
+                                <th scope="col">Last Modified Date</th>
+                                <th scope="col">Task</th>
+                                <th scope="col">Subtask</th>
+                                <th scope="col">Scripts</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <tr>
+                                <th scope="row">1</th>
+                                <!-- ID Column Ends -->
+
+                                <td>
+                                    <a href="container.html" class="text-decoration-none text-dark">Pipeline 1</a>
+                                </td>
+                                <!-- Table Name Column Ends -->
+
+                                <td>
+                                    <span>This is data migration pipeline</span>
+                                </td>
+                                <!-- Target Table Column Ends -->
+
+                                <td>
+                                    <span>20-01-2021 10:25:33</span>
+                                </td>
+                                <!-- Start Date Column Ends -->
+
+                                <td>
+                                    <span>20-01-2021 10:25:33</span>
+                                </td>
+                                <!-- End Date Column Ends -->
+
+                                <td>
+                                    <span class="text-success">5</span>
+                                </td>
+                                <!-- Status Column Ends -->
+
+
+                                <td>
+                                    <span class="text-warning">10</span>
+                                </td>
+                                <!-- Result Column Ends -->
+
+                                <td>
+                                    <span class="text-success"> 12 </span>
+                                </td>
+                                <!-- Records Loaded Column Ends -->
+                            </tr>
+                            <script>
+                                var rows = '';
+                                for(var i = 0; i < 8; i++){
+                                    rows += '<tr><th scope="row">'+(i+1)+'</th><td><a href="container.html" class="text-decoration-none text-dark">Pipeline '+(i+1)+'</a></td><td><span>This is data migration pipeline</span></td><td><span>20-01-2021 10:25:33</span></td><td><span>20-01-2021 10:25:33</span></td><td><span class="text-success">5</span></td><td><span class="text-warning">10</span></td><td><span class="text-success">12</span></td></tr>'
+                                }
+                                document.getElementById("table-body").innerHTML = rows
+                            </script>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header py-1">
+                            Logs
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-bordered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>DateTime</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>20-01-2021 10:25:33</td>
+                                        <td>Some message here</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="addWorkflowModal"  data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="addWorkflowModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="addWorkflowModalLabel" style="font-weight: 600">Add New Pipeline</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pb-0">
+                <form id="addWorkflowFrom">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Pipeline Name</label>
+                        <input type="text" class="form-control form-control-sm" id="projectName" aria-describedby="emailHelp" name="projectName" placeholder="Enter pipeline name..." required>
+                        <div id="emailHelp" class="form-text">A new workflow would be created with the name provided.</div>
+                    </div>   
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Pipeline Desc</label>
+                        <textarea class="form-control form-control-sm" placeholder="Enter pipeline description"></textarea>
+                    </div>   
+                    <div class="modal-footer py-2">
+                        <button type="button" class="btn btn-sm btn-danger-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-primary-light">Save</button>           
+                    </div>
+                </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/jQuery/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>

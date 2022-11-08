@@ -1,0 +1,47 @@
+.fs-small {
+    font-size: 0.9rem;
+}
+
+.font-20px {
+    font-size: 20px;
+}
+
+.font-18px {
+    font-size: 18px;
+}
+
+.font-16px {
+    font-size: 16px;
+}
+
+.font-14px {
+    font-size: 14px;
+}
+
+.font-12px {
+    font-size: 12px;
+}
+
+.font-25px {
+    font-size: 25px;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.text-gray {
+    color: #9F9F9F;
+}
+
+.text-dark-gray {
+    color: #808080;
+}
+
+.line-height-16px {
+    line-height: 16px;
+}
+
+.height-24px{
+    height: 1.5rem;
+}

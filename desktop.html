@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+
+    <!-- Fontawesome Link -->
+    <link rel="stylesheet" href="./assets/fontawesome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <title>Bedrock Tool</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light shadow shadow-sm py-1 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 fw-bold py-0" href="#">
+                <svg width="167" height="42" viewBox="0 0 167 42" fill="none" class="site-logo">
+                    <rect width="167" height="42" fill="url(#pattern0)"/>
+                    <defs>
+                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_39_1494" transform="scale(0.00598802 0.0238095)"/>
+                    </pattern>
+                    <image id="image0_39_1494" width="167" height="42" xlink:href="data:image/png;base64,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"/>
+                    </defs>
+                </svg>
+            </a>
+            <div class="w-40">
+                <input type="search" class="form-control form-control-sm" placeholder="Search">
+            </div>
+            <div class="d-flex">
+                <div type="button" class="position-relative d-flex justify-content-center align-items-center notification-bell me-2">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New alerts</span>
+                    </span>
+                </div>
+                <button class="btn btn-sm text-dark nav-plus-btn mx-2" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="fa-solid fa-plus text-light"></i></button>
+                <button class="btn btn-outline-secondary btn-sm d-flex justify-content-center align-items-center" type="submit">
+                    <svg width="15" height="16" viewBox="0 0 15 16" fill="none" class="me-2">
+                        <path d="M9.04667 12.7134C9.04667 13.12 8.77998 13.6534 8.43998 13.86L7.5 14.4667C6.62667 15.0067 5.41333 14.4 5.41333 13.32V9.75336C5.41333 9.28002 5.14667 8.67336 4.87333 8.34003L2.31331 5.64669C1.97331 5.30669 1.70667 4.7067 1.70667 4.30003V2.75336C1.70667 1.94669 2.31334 1.34003 3.05334 1.34003H11.9467C12.6867 1.34003 13.2933 1.94669 13.2933 2.68669V4.16669C13.2933 4.70669 12.9533 5.38003 12.62 5.71336" stroke="#4C4C4C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>Filter</button>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid py-4">
+        <div class="row" id="projectRow">
+            <div class="col-md-6">
+                <h5 class="text-center text-uppercase fw-600">Production-1</h5>
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Extract
+                        <a class="text-gray float-end" href="extractJob.html"><i class="fa-solid fa-plus"></i></a>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">5 Full Load</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">O CDC</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">15 Delta</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Transform
+                        <a class="text-gray float-end" href="workflow.html"><i class="fa-solid fa-plus"></i></a>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="transform.html">
+                                    <p class="mb-1 font-14px fw-600">5 Jobs</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <!-- <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">4 Projects</p>
+                                </a>
+                            </li> -->
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="transform.html">
+                                    <p class="mb-1 font-14px fw-600">15 Work Flow</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Report
+                        <span class="text-gray float-end"><i class="fa-solid fa-plus"></i></span>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <p class="mb-1 font-14px fw-600">10 Data Set</p>
+                                </a>
+
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">15 Reports</p>
+                                </a>
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">400 KPIS</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-center text-uppercase fw-600">Dev-Environment</h5>
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Extract
+                        <a class="text-gray float-end" href="extractJob.html"><i class="fa-solid fa-plus"></i></a>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">5 Full Load</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">O CDC</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="extract.html">
+                                    <p class="mb-1 font-14px fw-600">15 Delta</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Transform
+                        <a class="text-gray float-end" href="workflow.html"><i class="fa-solid fa-plus"></i></a>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="transform.html">
+                                    <p class="mb-1 font-14px fw-600">5 Jobs</p>
+                                    <div>
+                                        <div class="dot btn-danger-light fw-bold">4</div>
+                                        <div class="dot btn-success-light fw-bold">3</div>
+                                        <div class="dot btn-warning-light fw-bold">1</div>
+                                        <div class="dot btn-primary-light fw-bold">1</div>
+                                    </div>
+                                </a>
+
+                            </li>
+                            <!-- <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">4 Projects</p>
+                                </a>
+                            </li> -->
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" href="transform.html">
+                                    <p class="mb-1 font-14px fw-600">15 Work Flow</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3">
+                    <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Report
+                        <span class="text-gray float-end"><i class="fa-solid fa-plus"></i></span>
+                    </h5>
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <p class="mb-1 font-14px fw-600">10 Data Set</p>
+                                </a>
+
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">15 Reports</p>
+                                </a>
+                            </li>
+                            <li class="nav-item border" role="presentation">
+                                <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <p class="mb-1 font-14px fw-600">400 KPIS</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Project Modal -->
+    <div class="modal fade" id="addProjectModal"  data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="addProjectModalLabel" style="font-weight: 600">Add New Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pb-0">
+                <form id="addProjectFrom">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Project Name</label>
+                        <input type="text" class="form-control form-control-sm" id="projectName" aria-describedby="emailHelp" name="projectName" placeholder="Enter project name..." required>
+                        <div id="emailHelp" class="form-text">A new project would be created with the name provided.</div>
+                    </div>     
+                    <div class="modal-footer py-2">
+                        <button type="button" class="btn btn-sm btn-danger-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-primary-light">Save</button>           
+                    </div>
+                </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/jQuery/jquery-3.6.0.min.js"></script>
+    <script>
+        var addProjectModal = new bootstrap.Modal(document.getElementById('addProjectModal'), {
+        keyboard: false
+        })
+        function processAddProjectForm(e) {
+            if (e.preventDefault) e.preventDefault();
+            
+            var projectName = document.getElementById('projectName').value;
+            
+
+            if(projectName != ''){
+                var newProject = document.createElement("div")
+                newProject.className = "col-md-6 mt-5"
+                newProject.innerHTML = '<h5 class="text-center text-uppercase fw-600">'+projectName+'</h5> <div class="card desktop-card border-0 bg-light-grey px-3 py-2"> <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Extract <a class="text-gray float-end" href="extractJob.html"><i class="fa-solid fa-plus"></i></a> </h5> <div class="card-body"> <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> <li class="nav-item border" role="presentation"> <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <p class="mb-1 font-14px fw-600">5 Full Load</p><div> <div class="dot btn-danger-light fw-bold">0</div><div class="dot btn-success-light fw-bold">0</div><div class="dot btn-warning-light fw-bold">0</div><div class="dot btn-primary-light fw-bold">0</div></div></a> </li><li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> <p class="mb-1 font-14px fw-600">O CDC</p><div> <div class="dot btn-danger-light fw-bold">0</div><div class="dot btn-success-light fw-bold">0</div><div class="dot btn-warning-light fw-bold">0</div><div class="dot btn-primary-light fw-bold">0</div></div></a> </li><li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"> <p class="mb-1 font-14px fw-600">15 Delta</p><div> <div class="dot btn-danger-light fw-bold">0</div><div class="dot btn-success-light fw-bold">0</div><div class="dot btn-warning-light fw-bold">0</div><div class="dot btn-primary-light fw-bold">0</div></div></a> </li></ul> </div></div><div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3"> <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Transform <a class="text-gray float-end" href="transform.html"><i class="fa-solid fa-plus"></i></a> </h5> <div class="card-body"> <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> <li class="nav-item border" role="presentation"> <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <p class="mb-1 font-14px fw-600">5 Jobs</p><div> <div class="dot btn-danger-light fw-bold">0</div><div class="dot btn-success-light fw-bold">0</div><div class="dot btn-warning-light fw-bold">0</div><div class="dot btn-primary-light fw-bold">1</div></div></a> </li><!-- <li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> <p class="mb-1 font-14px fw-600">0 Projects</p></a> </li>--> <li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"> <p class="mb-1 font-14px fw-600">15 Work Flow</p></a> </li></ul> </div></div><div class="card desktop-card border-0 bg-light-grey px-3 py-2 mt-3"> <h5 class="card-header bg-light-grey border-0 font-18px fw-600">Report <span class="text-gray float-end"><i class="fa-solid fa-plus"></i></span> </h5> <div class="card-body"> <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> <li class="nav-item border" role="presentation"> <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <p class="mb-1 font-14px fw-600">10 Data Set</p></a> </li><li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> <p class="mb-1 font-14px fw-600">15 Reports</p></a> </li><li class="nav-item border" role="presentation"> <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"> <p class="mb-1 font-14px fw-600">400 KPIS</p></a> </li></ul> </div></div>'
+                document.getElementById("projectRow").append(newProject)
+
+                addProjectModal.hide()
+            }
+            else{
+                console.log("null")
+            }
+
+            return false;
+        }
+
+        var addProjectForm = document.getElementById('addProjectFrom');
+        addProjectForm.addEventListener('submit', processAddProjectForm)
+    </script>
+</body>
+
+</html>

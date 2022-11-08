@@ -1,0 +1,484 @@
+@font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('../fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf');
+}
+
+* {
+    letter-spacing: 0.16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+label {
+    font-size: 0.9rem !important;
+}
+
+#orgChart>table>tbody>tr>td>.node h2 {
+    background: #cfe2ff;
+}
+
+#orgChart>table>tbody>tr>td>table>tbody>tr>td>.node h2 {
+    background: #e2e3e5;
+}
+
+#orgChart>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td>.node h2 {
+    background: #cff4fc;
+}
+
+#orgChart>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td>.node h2 {
+    background: #fff3cd;
+}
+
+#orgChart>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>td .node h2 {
+    background: #d1e7dd;
+}
+
+.node:hover {
+    background: #F8F8F8 !important;
+}
+
+.node.active {
+    background: #F1F1F1 !important;
+}
+
+.properties-table>:not(caption)>*>* {
+    padding: 0.3rem 0.5rem;
+}
+
+.properties-heading {
+    background-color: #e2e3e5;
+}
+
+.properties-panel button {
+    background-color: #e2e3e5;
+}
+
+.site-logo {
+    height: 1.5rem;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.desktop-card {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.desktop-card .nav-pills .nav-link {
+    background: #FFFFFF;
+    height: 75px;
+    width: 151px;
+    border: 0;
+    border-radius: 0;
+    color: #000000;
+    border-bottom: 3px solid #FFF;
+}
+
+.desktop-card .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #000000;
+    background-color: #EAEAEA;
+    border-bottom: 3px solid #43B5F4;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.nav-plus-btn {
+    border-radius: 50%;
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+    height: 38px;
+    width: 38px;
+}
+
+.notification-bell i {
+    font-size: 1.5rem;
+    color: #6F767E;
+}
+
+.notification-bell span {
+    top: .5rem !important;
+    padding: 0.3rem !important;
+}
+
+.sidenav-container {
+    background: #F5F7F9;
+    border-radius: 20px;
+}
+
+.sidenav-card {
+    border-radius: 15px;
+}
+
+.sidebar-icon {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.icon-primary {
+    background-color: #EBF2FF;
+}
+
+.icon-primary i {
+    color: #377DFF;
+}
+
+.icon-success {
+    background-color: #EBFAF3;
+}
+
+.icon-success i {
+    color: #38CB89;
+}
+
+.icon-secondary {
+    background-color: #F5F7F9;
+}
+
+.icon-secondary i {
+    color: #9F9F9F;
+}
+
+.icon-warning {
+    background-color: #FFF7E5;
+}
+
+.icon-warning i {
+    color: #FFAB00;
+}
+
+.icon-danger {
+    background-color: #FFEEEA;
+}
+
+.icon-danger i {
+    color: #FF5630;
+}
+
+.job-progress {
+    height: 4px;
+}
+
+.prorgess-container {
+    width: calc(100% - 118px);
+    display: inline-block;
+}
+
+.page-link {
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+.table>:not(caption)>*>* {
+    border-bottom-width: 0px;
+}
+
+#items-container .dragableBox {
+    width: 100%;
+    display: flex;
+}
+
+.dragableBox {
+    width: fit-content;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: start;
+}
+
+@media (max-width: 576px) {
+    .dragableBox {
+        text-align: center;
+    }
+}
+
+.dragBoxIcon {
+    height: 2rem;
+    background: #F1F4FC;
+    width: 2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    margin: 0 !important;
+}
+
+.dragBoxIcon svg {
+    height: 1rem;
+}
+
+.dragBoxIcon img {
+    max-height: 100%;
+    margin: 0 !important;
+}
+
+.dragableSection {
+    height: auto;
+    border-radius: 0.25rem;
+    background-color: #F1F5F9;
+    /* margin-bottom: 1.5rem; */
+    border: 1px dashed #396DA9;
+    min-height: 200px;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.invisible {
+    display: none;
+}
+
+.column-right .dragableBox {
+    min-width: 200px;
+    display: inline-flex;
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+    justify-content: space-between;
+}
+
+#propertiesOffcanvas {
+    top: 50px;
+}
+
+.addSectionBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dragableBox.selected {
+    background: white;
+    border: 1px solid #4ea9ff;
+    -webkit-box-shadow: 0 2px 20px 2px #4ea9ff;
+    box-shadow: 0 2px 20px 2px #4ea9ff;
+}
+
+.connector-arrow-blue {
+    transform: rotate(90deg);
+}
+
+.connector-arrow-black {
+    transform: rotate(135deg);
+}
+
+.containerLink {
+    height: 30px;
+    cursor: pointer;
+}
+
+.containerLinkContainer:hover {
+    -webkit-box-shadow: 0 2px 20px 2px #4ea9ff;
+    box-shadow: 0 2px 20px 2px #4ea9ff;
+}
+
+.containerLinkContainer {
+    height: 2rem;
+    background: #F1F4FC;
+    width: 2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    margin-left: 0.75rem;
+}
+
+.workflow-name {
+    line-height: 2rem;
+}
+
+.removeSectionBtn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.context-menu {
+    position: absolute;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.menu>li>a {
+    font: inherit;
+    border: 0;
+    padding: 6px 30px 6px 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: unset;
+    color: #212529;
+    font-size: 0.9rem;
+}
+
+.menu>li>a:hover {
+    background: #f1f3f7;
+    color: #4b00ff;
+}
+
+.menu>li>a>i {
+    padding-right: 10px;
+}
+
+.menu>li.trash>a:hover {
+    color: red;
+}
+
+.project-nav .breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-nav .breadcrumb-item+.breadcrumb-item {
+    padding-left: unset;
+}
+
+.openEditorBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.dragableBox .ops-icon {
+    height: 1.3rem;
+}
+
+
+.w-70px {
+    width: 70px !important;
+}
+
+.w-100px {
+    width: 108px;
+}
+
+
+.modal-connection {
+    font-size: 13px;
+}
+
+.modal-connection table tr th:first-child,
+.modal-connection table tr td:first-child {
+    text-align: center;
+}
+
+.multiselect-btns-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.multiselect-btns {
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50% !important;
+}
+
+#monitorSection {
+    display: none;
+}
+
+#sourceSection {
+    width: 40%;
+    margin: auto;
+    min-width: 400px;
+    min-height: 175px;
+    height: 175px;
+}
+
+/* Autocomplete CSS Starts */
+
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+#sourceSection .dragableBox,
+#destinationSection .dragableBox{
+    justify-content: flex-start;
+}

@@ -1,0 +1,32 @@
+.bg-light-grey {
+    background: #F6F6F6 !important;
+}
+
+.btn-warning-light {
+    background-color: #FDF8CE;
+    color: #938406;
+}
+
+.btn-success-light {
+    background-color: #DEEDE5;
+    color: #427A5B;
+}
+
+.btn-primary-light {
+    background-color: #C8DBFF;
+    color: #377DFF;
+}
+
+.btn-danger-light {
+    background-color: #EDDEDE;
+    color: #A65959;
+}
+
+.btn-light-light {
+    background-color: #FAFAFA;
+    color: #999999;
+}
+
+.w-40px {
+    width: 40px;
+}

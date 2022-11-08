@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Goose</title>
+</head>
+
+<body>
+
+    <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/dist/drawflow.min.js"></script>
+    <script src="./assets/fontawesome/fontawesome-free-6.1.1-web/js/all.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+    <link rel="stylesheet" type="text/css" href="./assets/src/drawflow.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/docs/beautiful.css" />
+    <link rel="stylesheet" href="./assets/fontawesome//fontawesome-free-6.1.1-web/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="./assets/jQuery/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <header>
+        <nav class="navbar navbar-light h-100 bg-light shadow shadow-sm sticky-top">
+            <div class="container-fluid">
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" class="project-nav">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a class="nav-link text-dark" href="desktop.html">Home</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link text-dark" href="desktop.html">Dev Environment</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a class="nav-link" href="#" contenteditable="true" id="jobName">New Job</a>
+                        </li>
+                    </ol>
+                </nav>
+                <div class="d-flex">
+                    <button class="btn btn-sm btn-success-light"><i class="fa-solid fa-play"></i><span class="ms-1">Run</span></button>
+                    <button class="btn btn-sm btn-warning-light ms-3" id="monitorBtn"><i class="fa-solid fa-tv"></i> <span class="ms-1">Monitor</span></button>
+                </div>
+            </div>
+        </nav>
+        <!-- <h2 contenteditable="true" id="jobName" class="d-inline-block px-2">New Job 1</h2> -->
+        <!-- <div class="github-link">
+         <button class="btn mt-1 btn-light-green">Save Job</button> 
+        </div> -->
+
+    </header>
+    <div class="wrapper" id="wrapper">
+
+        <div class="col" id="canvasLeft">
+            <input type="search" class="form-control form-control-sm my-2 mx-3 source-destination-search-field" placeholder="Search...">
+            <nav class="border-top">
+                <div class="nav nav-tabs source-destination-tabs" id="nav-tab" role="tablist">
+                    <li class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Source</li>
+                    <li class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Destination</li>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="source_sql">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="dragBoxIcon"><img src="./assets/images/logos/icons8-sql-48.png" alt="" class="height-24px"></span></div>
+                            <div class="col-sm-10">
+                                <span class="ms-1 node-title">Source (SQL)</span><br><span class="node-desc">Add source connection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="source_oracle">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="dragBoxIcon"><img src="./assets/images/logos/icons8-oracle-logo-48.png" alt="" class="height-24px"></span></div>
+                            <div class="col-sm-10">
+                                <span class="ms-1 node-title">Source (Oracle)</span><br><span class="node-desc">Add source connection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="source_excel">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="dragBoxIcon"><img src="./assets/images/logos/icons8-microsoft-excel-48.png" alt="" class="height-24px"></span></div>
+                            <div class="col-sm-10">
+                                <span class="ms-1 node-title">Source (Excel)</span><br><span class="node-desc">Add source connection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div id="existing_sources"></div>
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="destination_sql">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="dragBoxIcon"><img src="./assets/images/logos/icons8-sql-48.png" alt="" class="height-24px"></span></div>
+                            <div class="col-sm-10">
+                                <span class="ms-1 node-title">Destination (SQL)</span><br><span class="node-desc">Add destination connection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="destination_oracle">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="dragBoxIcon"><img src="./assets/images/logos/icons8-oracle-logo-48.png" alt="" class="height-24px"></span></div>
+                            <div class="col-sm-10">
+                                <span class="ms-1 node-title">Destination (Oracle)</span><br><span class="node-desc">Add destination connection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div id="existing_destinations"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-right" id="canvasRight">
+            <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                <!-- <a class="btn-export" target="_blank" href="monitor.html">Monitor</a>
+                <div class="btn-clear" onclick="editor.clearModuleSelected()">Clear</div>
+                <div class="btn-run" onclick="editor.clearModuleSelected()">Run</div> -->
+                <div class="btn-lock">
+                    <i id="lock" class="fas fa-lock" onclick="editor.editor_mode='fixed'; changeMode('lock');"></i>
+                    <i id="unlock" class="fas fa-lock-open" onclick="editor.editor_mode='edit'; changeMode('unlock');" style="display:none;"></i>
+                </div>
+                <div class="bar-zoom">
+                    <i class="fas fa-search-minus" onclick="editor.zoom_out()"></i>
+                    <i class="fas fa-search" onclick="editor.zoom_reset()"></i>
+                    <i class="fas fa-search-plus" onclick="editor.zoom_in()"></i>
+                </div>
+            </div>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="propertiesOffcanvas" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Properties</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form id="properties-form">
+                        <table class="table fs-small properties-table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Name : </th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder="Enter Source Name" name="connectionName" id="connectionName">
+                                        <input type="hidden" name="" id="triggeringNodeId" name="triggeringNodeId">
+                                        <input type="hidden" name="" id="triggeringNodeType" name="triggeringNodeType">
+                                        <input type="hidden" name="" id="triggeringNodeStatus" name="triggeringNodeStatus">
+                                        <input type="hidden" name="" id="triggeringNodeDesc" name="triggeringNodeDesc">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Description : </th>
+                                    <td>
+                                        <textarea name="connectionDesc" class="form-control form-control-sm" placeholder="Enter Source Description...." id="connectionDesc"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Driver : </th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder="Enter Source Driver Name" name="driverName"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Details : </th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder="Enter Connection Details" name="details"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Server Name : </th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder="Enter Server Name" name="serverName"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Username : </th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder="Enter Username" name="username"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Password : </th>
+                                    <td><input type="password" class="form-control form-control-sm" placeholder="Enter Password" name="password"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="border-bottom-0 text-center">
+                                        <button class="btn btn-primary-light btn-sm w-50" type="submit">Save</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="monitorSection" class="">
+            <section id="main-section">
+                <div class="container-fluid py-2 font-12px">
+                    <div class="row mt-3">
+                        <div class="col-md-9">
+
+                            <table class="table table-hover font-12px vertical-align-middle table-">
+                                <thead>
+                                    <tr class="table-secondary">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Table Name</th>
+                                        <th scope="col">Target Table</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Result</th>
+                                        <th scope="col">Records Loaded/Expected</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <!-- ID Column Ends -->
+
+                                        <td>
+                                            <span>Table1</span>
+                                        </td>
+                                        <!-- Table Name Column Ends -->
+
+                                        <td>
+                                            <span>Table2</span>
+                                        </td>
+                                        <!-- Target Table Column Ends -->
+
+                                        <td>
+                                            <span>20-01-2021 10:25:33</span>
+                                        </td>
+                                        <!-- Start Date Column Ends -->
+
+                                        <td>
+                                            <span>20-01-2021 10:25:33</span>
+                                        </td>
+                                        <!-- End Date Column Ends -->
+
+                                        <td>
+                                            <span class="text-success">Running</span>
+                                        </td>
+                                        <!-- Status Column Ends -->
+
+
+                                        <td>
+                                            <span class="text-warning">Pending</span>
+                                        </td>
+                                        <!-- Result Column Ends -->
+
+                                        <td class="text-center">
+                                            <span class="text-success"> 8,412/10,412 </span>
+                                        </td>
+                                        <!-- Records Loaded Column Ends -->
+                                    </tr>
+                                    <script>
+                                        var rows = '';
+                                        for (var i = 0; i < 15; i++) {
+                                            rows += '<tr><th scope="row">' + (i + 1) + '</th> <td><span>Table1</span> </td> <td> <span>Table2</span></td> <td> <span>20-01-2021 10:25:33</span> </td> <td><span>20-01-2021 10:25:33</span> </td> <td> <span class="text-success">Running</span></td> <td> <span class="text-warning">Pending</span></td> <td class="text-center"><span class="text-success"> 8,412/10,412 </span> </td></tr>'
+                                        }
+                                        document.getElementById("table-body").innerHTML = rows
+                                    </script>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header py-1">
+                                    Logs
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>DateTime</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>20-01-2021 10:25:33</td>
+                                                <td>Some message here</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Modal Starts -->
+    <div class="modal fade" id="connections-table" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-connection">
+            <div class="modal-content py-2 px-3">
+                <div class="container" id="selectTables">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Select Tables</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="" id="destinationSchemaInput" placeholder="Enter Destination Schema" class="form-control form-control-sm float-end">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-5">
+                            <input type="search" placeholder="Filter..." onkeyup="filter()" id="search" class="form-control form-control-sm">
+                            <select name="from" id="multiselect" class="form-control form-control-sm mt-1" size="8" multiple="multiple">
+                                <option value="1">Patient</option>
+                                <option value="2">Patient Address</option>
+                                <option value="3">Patient GP</option>
+                                <option value="4">Hospital Provider</option>
+                                <option value="5">Outpatient</option>
+                                <option value="6">GP Pratice</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 multiselect-btns-column">
+                            <button type="button" id="multiselect_rightAll" class="btn btn-primary-light multiselect-btns"><i class="fa-solid fa-angles-right"></i></button>
+                            <button type="button" id="multiselect_rightSelected" class="btn btn-primary-light multiselect-btns mt-2"><i class="fa-solid fa-angle-right"></i></button>
+                            <button type="button" id="multiselect_leftSelected" class="btn btn-primary-light multiselect-btns mt-2"><i class="fa-solid fa-angle-left"></i></button>
+                            <button type="button" id="multiselect_leftAll" class="btn btn-primary-light multiselect-btns mt-2"><i class="fa-solid fa-angles-left"></i></button>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="search" placeholder="Filter..." onkeyup="filterTo()" id="search_to" class="form-control form-control-sm">
+                            <select name="to" id="multiselect_to" class="form-control form-control-sm mt-1" size="8" multiple="multiple">
+                    </select>
+                        </div>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button class="btn btn-sm btn-light-grey width-100px" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-sm btn-success-light" id="availableTablesSelected">Save Selection</button>
+                    </div>
+                </div>
+
+                <div class="container" id="viewTables" style="display:none">
+                    <div>
+                        <div class="row font-12px px-2 my-2">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1" class="form-label">Batch Size</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Batch Size...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1" class="form-label">Max Thread</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Max Thread...">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <span>Show</span>
+                                <select class="form-select form-select-sm d-inline-block w-70px ms-2 font-12px">
+                                    <option selected>10</option>
+                                    <option value="1">20</option>
+                                    <option value="2">30</option>
+                                    <option value="3">40</option>
+                                </select>
+                                <span> entries</span>
+                            </div> -->
+                            <div class="col-md-4 text-end">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                    <label class="form-check-label" for="inlineCheckbox1">Full Load</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Delta</label>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4 text-right">
+
+                                <input type="search" name="" id="" class="form-control form-control-sm w-70 float-end font-12px" placeholder="Search tables...">
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="mt-4 mb-1">
+                        <input type="search" name="" id="" class="form-control form-control-sm font-12px" placeholder="Search table...">
+                    </div>
+                    <table class="table table-bordered table-hover font-12px vertical-align-middle table-">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                <th scope="col">S. No</th>
+                                <th scope="col">Source Schema</th>
+                                <th scope="col">Source Table Name</th>
+                                <th scope="col">Destination Schema</th>
+                                <th scope="col">Destination Table Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>1</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>GP Practice</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">GP Practice</span></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>2</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>Hospital Provider</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Hospital Provider</span></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>3</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>Outpatient</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Outpatient</span></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>4</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>Patient</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Patient</span></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>5</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>Patient Address</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Patient Address</span></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>6</td>
+                                <td><span>DBO<e/span></td>
+                                <td><span>Patient GP</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Scott</span></td>
+                                <td><span contenteditable="true" class="py-1 px-2">Patient GP</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <span>Show</span>
+                            <select class="form-select form-select-sm d-inline-block w-70px ms-2 font-12px">
+                                <option selected>10</option>
+                                <option value="1">20</option>
+                                <option value="2">30</option>
+                                <option value="3">40</option>
+                            </select>
+                            <span> entries</span>
+                        </div>
+                        <div class="col-md-8 text-end">
+                            <button class="btn btn-sm btn-primary-light width-100px" id="selectTablesBtn">Select Tables</button>
+                            <button class="btn btn-sm btn-light-grey width-100px" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-sm btn-success-light width-100px" data-bs-dismiss="modal">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ends -->
+
+    <script>
+        document.getElementById("monitorBtn").addEventListener("click", function() {
+            $("#canvasLeft").toggleClass("d-none")
+            $("#canvasRight").toggleClass("d-none")
+            $("#wrapper").toggleClass("d-block")
+            $("#monitorSection").toggleClass("d-block")
+        })
+
+        $('h2[contenteditable]').keydown(function(e) {
+            // trap the return key being pressed
+            if (e.keyCode === 13) {
+                // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+                document.execCommand('insertHTML', false, '<br/>');
+                // prevent the default behaviour of return key pressed
+                this.blur()
+                return false;
+            }
+        });
+
+        var id = document.getElementById("drawflow");
+        const editor = new Drawflow(id);
+        editor.reroute = true;
+        editor.reroute_fix_curvature = true;
+        editor.force_first_input = false;
+
+        /*
+          editor.createCurvature = function(start_pos_x, start_pos_y, end_pos_x, end_pos_y, curvature_value, type) {
+            var center_x = ((end_pos_x - start_pos_x)/2)+start_pos_x;
+            return ' M ' + start_pos_x + ' ' + start_pos_y + ' L '+ center_x +' ' +  start_pos_y  + ' L ' + center_x + ' ' +  end_pos_y  + ' L ' + end_pos_x + ' ' + end_pos_y;
+          }*/
+
+
+
+
+
+        const dataToImport = {
+            "drawflow": {
+                "Home": {
+                    "data": {
+
+                    }
+                }
+
+            }
+        }
+        editor.start();
+        editor.import(dataToImport);
+
+
+
+        /*
+    var welcome = `
+    <div>
+      <div class="title-box">👏 Welcome!!</div>
+      <div class="box">
+        <p>Simple flow library <b>demo</b>
+        <a href="https://github.com/jerosoler/Drawflow" target="_blank">Drawflow</a> by <b>Jero Soler</b></p><br>
+
+        <p>Multiple input / outputs<br>
+           Data sync nodes<br>
+           Import / export<br>
+           Modules support<br>
+           Simple use<br>
+           Type: Fixed or Edit<br>
+           Events: view console<br>
+           Pure Javascript<br>
+        </p>
+        <br>
+        <p><b><u>Shortkeys:</u></b></p>
+        <p>🎹 <b>Delete</b> for remove selected<br>
+        💠 Mouse Left Click == Move<br>
+        ❌ Mouse Right == Delete Option<br>
+        🔍 Ctrl + Wheel == Zoom<br>
+        📱 Mobile support<br>
+        ...</p>
+      </div>
+    </div>
+    `;
+*/
+
+
+        //editor.addNode(name, "typenode": false,  inputs, outputs, posx, posy, class, data, html);
+        /*editor.addNode('welcome', 0, 0, 50, 50, 'welcome', {}, welcome );
+        editor.addModule('Other');
+        */
+        var bsOffcanvas = new bootstrap.Offcanvas($('#propertiesOffcanvas'))
+
+        function updateTriggeredNodeDetailsOnOffcanvas(nodeId, nodeType, nodeStatus, nodeDesc, nodeName) {
+            document.getElementById('triggeringNodeId').value = nodeId
+            document.getElementById('triggeringNodeType').value = nodeType
+            document.getElementById('triggeringNodeStatus').value = nodeStatus
+            document.getElementById('triggeringNodeDesc').value = nodeDesc
+            document.getElementById('connectionName').value = nodeName
+            document.getElementById('connectionDesc').value = nodeDesc
+        }
+
+        function processForm(e) {
+            if (e.preventDefault) e.preventDefault();
+            const formData = [...document.querySelector('#properties-form').elements]
+                .filter(element => element.name !== 'submit') // this is not a form data...
+                .reduce((acc, input) => ({...acc,
+                    [input.name]: input.value
+                }), {})
+                /* do what you want with the form */
+            console.log("Form submitted")
+            console.log(formData.connectionName)
+            console.log(document.getElementById('triggeringNodeId').value)
+            if (document.getElementById('triggeringNodeStatus').value === "new" && formData.connectionName != '' && formData.connectionDesc != '') {
+                if (document.getElementById('triggeringNodeType').value === "source") {
+                    document.getElementById('existing_sources').innerHTML += '<div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="source"><div class="row"><div class="col-sm-2"><span class="dragBoxIcon"><i class="fa-solid fa-bolt text-warning"></i></span></div><div class="col-sm-10"><span class="ms-1 node-title">' + formData.connectionName + '</span><br><span class="node-desc">' + formData.connectionDesc + '</span></div></div> </div>'
+                } else if (document.getElementById('triggeringNodeType').value === "destination") {
+                    document.getElementById('existing_destinations').innerHTML += '<div class="drag-drawflow py-2 px-2 border rounded" draggable="true" ondragstart="drag(event)" data-node="destination"><div class="row"><div class="col-sm-2"><span class="dragBoxIcon"><i class="fa-solid fa-database text-warning"></i></span></div><div class="col-sm-10"><span class="ms-1 node-title">' + formData.connectionName + '</span><br><span class="node-desc">' + formData.connectionDesc + '</span></div></div> </div>'
+                }
+                // console.log($('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').innerHTML = formData.connectionName)
+                $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').text(formData.connectionName)
+                $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node div').attr('data-connection-status', "old")
+
+            } else if (document.getElementById('triggeringNodeStatus').value === "old" && formData.connectionName != '' && formData.connectionDesc != '') {
+                $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').text(formData.connectionName)
+            }
+
+            document.getElementById("properties-form").reset()
+            bsOffcanvas.hide()
+                // You must return false to prevent the default form behavior
+            return false;
+        }
+
+        var propertiesForm = document.getElementById('properties-form');
+        propertiesForm.addEventListener("submit", processForm);
+
+        // Events!
+        editor.on('nodeCreated', function(id) {
+            console.log("Node created " + id);
+            var node = document.querySelectorAll("div[id='node-" + id + "']")[0]
+            node.addEventListener("dblclick", function() {
+                console.log("double clicked")
+
+                bsOffcanvas.show()
+                updateTriggeredNodeDetailsOnOffcanvas(id, this.querySelectorAll('[data-connection-type]')[0].getAttribute('data-connection-type'), this.querySelectorAll('[data-connection-status]')[0].getAttribute('data-connection-status'), this.querySelectorAll('[data-node-desc]')[0].getAttribute('data-node-desc'), this.querySelector('span').innerText)
+
+                console.log("data-connection-type : ", this.querySelectorAll('[data-connection-type]')[0].getAttribute('data-connection-type'))
+                console.log("data-connection-status : ", this.querySelectorAll('[data-connection-status]')[0].getAttribute('data-connection-status'))
+                console.log("data-node-desc : ", this.querySelectorAll('[data-node-desc]')[0].getAttribute('data-node-desc'), this.querySelector('span').innerText)
+                console.log("data-node-text : ", this.getElementsByClassName('title-box')[0].innerText)
+            })
+        })
+
+        editor.on('nodeRemoved', function(id) {
+            console.log("Node removed " + id);
+        })
+
+        editor.on('nodeSelected', function(id) {
+            console.log("Node selected " + id);
+        })
+
+        editor.on('moduleCreated', function(name) {
+            console.log("Module Created " + name);
+        })
+
+        editor.on('moduleChanged', function(name) {
+            console.log("Module Changed " + name);
+        })
+
+        editor.on('connectionCreated', function(connection) {
+            console.log('Connection created');
+            console.log(connection);
+        })
+
+        editor.on('connectionRemoved', function(connection) {
+            console.log('Connection removed');
+            console.log(connection);
+        })
+
+        editor.on('connectionSelected', function(connection) {
+                console.log('Connection Selected');
+                console.log(connection);
+                var myModal = new bootstrap.Modal(document.getElementById("connections-table"), {});
+                myModal.show();
+            })
+            /*
+                editor.on('mouseMove', function(position) {
+                  console.log('Position mouse x:' + position.x + ' y:'+ position.y);
+                })
+            */
+        editor.on('nodeMoved', function(id) {
+            console.log("Node moved " + id);
+        })
+
+        editor.on('zoom', function(zoom) {
+            console.log('Zoom level ' + zoom);
+        })
+
+        editor.on('translate', function(position) {
+            console.log('Translate x:' + position.x + ' y:' + position.y);
+        })
+
+        editor.on('addReroute', function(id) {
+            console.log("Reroute added " + id);
+        })
+
+        editor.on('removeReroute', function(id) {
+                console.log("Reroute removed " + id);
+            })
+            /* DRAG EVENT */
+
+        /* Mouse and Touch Actions */
+
+        var elements = document.getElementsByClassName('drag-drawflow');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('touchend', drop, false);
+            elements[i].addEventListener('touchmove', positionMobile, false);
+            elements[i].addEventListener('touchstart', drag, false);
+        }
+
+        var mobile_item_selec = '';
+        var mobile_last_move = null;
+
+        var elementGettingDragged = '';
+
+        function positionMobile(ev) {
+            mobile_last_move = ev;
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            elementGettingDragged = ev.target
+            console.log(elementGettingDragged)
+            if (ev.type === "touchstart") {
+                mobile_item_selec = ev.target.closest(".drag-drawflow").getAttribute('data-node');
+            } else {
+                ev.dataTransfer.setData("node", ev.target.getAttribute('data-node'));
+            }
+        }
+
+        function drop(ev) {
+            if (ev.type === "touchend") {
+                var parentdrawflow = document.elementFromPoint(mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY).closest("#drawflow");
+                if (parentdrawflow != null) {
+                    addNodeToDrawFlow(mobile_item_selec, mobile_last_move.touches[0].clientX, mobile_last_move.touches[0].clientY);
+                }
+                mobile_item_selec = '';
+            } else {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("node");
+                console.log(ev.dataTransfer)
+                addNodeToDrawFlow(data, ev.clientX, ev.clientY);
+            }
+
+        }
+
+        function addNodeToDrawFlow(name, pos_x, pos_y) {
+            if (editor.editor_mode === 'fixed') {
+                return false;
+            }
+            pos_x = pos_x * (editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)) - (editor.precanvas.getBoundingClientRect().x * (editor.precanvas.clientWidth / (editor.precanvas.clientWidth * editor.zoom)));
+            pos_y = pos_y * (editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)) - (editor.precanvas.getBoundingClientRect().y * (editor.precanvas.clientHeight / (editor.precanvas.clientHeight * editor.zoom)));
+
+
+            switch (name) {
+                case 'source':
+                    console.log(elementGettingDragged.getElementsByClassName("node-title")[0].innerText)
+                    var nodeTitle = elementGettingDragged.getElementsByClassName("node-title")[0].innerText
+                    var nodeDesc = elementGettingDragged.getElementsByClassName("node-desc")[0].innerText
+                    var source = `
+                                    <div data-connection-type="source" data-connection-status="old" data-node-desc="` + nodeDesc + `">
+                                      <div class="title-box"><i class="fa-solid fa-bolt text-warning"></i><span class="px-2">` + nodeTitle + `</span></div>
+                                    </div>
+                                  `;
+                    console.log(name)
+                    editor.addNode('source', 0, 1, pos_x, pos_y, 'source', {}, source);
+                    break;
+
+                case 'destination':
+                    console.log(elementGettingDragged.getElementsByClassName("node-title")[0].innerText)
+                    var nodeTitle = elementGettingDragged.getElementsByClassName("node-title")[0].innerText
+                    var nodeDesc = elementGettingDragged.getElementsByClassName("node-desc")[0].innerText
+                    var source = `
+                                    <div data-connection-type="source" data-connection-status="old" data-node-desc="` + nodeDesc + `">
+                                      <div class="title-box"><i class="fa-solid fa-database text-warning"></i><span class="px-2">` + nodeTitle + `</span></div>
+                                    </div>
+                                  `;
+                    console.log(name)
+                    editor.addNode('destination', 1, 0, pos_x, pos_y, 'destination', {}, source);
+                    break;
+                case 'source_sql':
+                    console.log(elementGettingDragged.getElementsByClassName("node-title")[0].innerText)
+                    var source = `
+                                    <div data-connection-type="source" data-connection-status="new" data-node-desc="Add source connection">
+                                      <div class="title-box"><img src="./assets/images/logos/icons8-sql-48.png" alt="" class="height-24px" style="height:1.5rem"><span class="px-2">Source (SQL)</span></div>
+                                    </div>
+                                  `;
+                    console.log(name)
+                    editor.addNode('source_sql', 0, 1, pos_x, pos_y, 'source_sql', {}, source);
+                    break;
+
+                case 'source_oracle':
+                    var source = `
+                                    <div data-connection-type="source" data-connection-status="new" data-node-desc="Add source connection">
+                                      <div class="title-box"><img src="./assets/images/logos/icons8-oracle-logo-48.png" alt="" class="height-24px"  style="height:1.5rem"><span class="px-2">Source (Oracle)</span></div>
+                                    </div>
+                                  `;
+                    editor.addNode('source_oracle', 0, 1, pos_x, pos_y, 'source_oracle', {}, source);
+                    break;
+
+                case 'source_excel':
+                    var source = `
+                                    <div data-connection-type="source" data-connection-status="new" data-node-desc="Add source connection">
+                                      <div class="title-box"><img src="./assets/images/logos/icons8-microsoft-excel-48.png" alt="" class="height-24px" style="height:1.5rem"><span class="px-2">Source (Excel)</span></div>
+                                    </div>
+                                  `;
+                    editor.addNode('source_excel', 0, 1, pos_x, pos_y, 'source_excel', {}, source);
+                    break;
+
+                case 'destination_sql':
+                    var destination = `
+                                    <div data-connection-type="destination" data-connection-status="new"data-node-desc="Add destination connection">
+                                      <div class="title-box"><img src="./assets/images/logos/icons8-sql-48.png" alt="" class="height-24px" style="height: 24px;"><span class="px-2">Destination (SQL)</span></div>
+                                    </div>
+                                  `;
+                    editor.addNode('destination_sql', 1, 0, pos_x, pos_y, 'destination_sql', {}, destination);
+                    break;
+                case 'destination_oracle':
+                    var destination = `
+                                    <div data-connection-type="destination" data-connection-status="new" data-node-desc="Add destination connection">
+                                      <div class="title-box"><img src="./assets/images/logos/icons8-oracle-logo-48.png" alt="" class="height-24px" style="height: 24px;"><span class="px-2">Destination (Oracle)</span></div>
+                                    </div>
+                                  `;
+                    editor.addNode('destination_oracle', 1, 0, pos_x, pos_y, 'destination_oracle', {}, destination);
+                    break;
+                case 'facebook':
+                    var facebook = `
+                                    <div>
+                                      <div class="title-box"><i class="fab fa-facebook"></i> Facebook Message</div>
+                                    </div>
+                                    `;
+                    editor.addNode('facebook', 0, 1, pos_x, pos_y, 'facebook', {}, facebook);
+                    break;
+                case 'slack':
+                    var slackchat = `
+          <div>
+            <div class="title-box"><i class="fab fa-slack"></i> Slack chat message</div>
+          </div>
+          `
+                    editor.addNode('slack', 1, 0, pos_x, pos_y, 'slack', {}, slackchat);
+                    break;
+                case 'github':
+                    var githubtemplate = `
+          <div>
+            <div class="title-box"><i class="fab fa-github "></i> Github Stars</div>
+            <div class="box">
+              <p>Enter repository url</p>
+            <input type="text" df-name>
+            </div>
+          </div>
+          `;
+                    editor.addNode('github', 0, 1, pos_x, pos_y, 'github', {
+                        "name": ''
+                    }, githubtemplate);
+                    break;
+                case 'telegram':
+                    var telegrambot = `
+          <div>
+            <div class="title-box"><i class="fab fa-telegram-plane"></i> Telegram bot</div>
+            <div class="box">
+              <p>Send to telegram</p>
+              <p>select channel</p>
+              <select df-channel>
+                <option value="channel_1">Channel 1</option>
+                <option value="channel_2">Channel 2</option>
+                <option value="channel_3">Channel 3</option>
+                <option value="channel_4">Channel 4</option>
+              </select>
+            </div>
+          </div>
+          `;
+                    editor.addNode('telegram', 1, 0, pos_x, pos_y, 'telegram', {
+                        "channel": 'channel_3'
+                    }, telegrambot);
+                    break;
+                case 'aws':
+                    var aws = `
+          <div>
+            <div class="title-box"><i class="fab fa-aws"></i> Aws Save </div>
+            <div class="box">
+              <p>Save in aws</p>
+              <input type="text" df-db-dbname placeholder="DB name"><br><br>
+              <input type="text" df-db-key placeholder="DB key">
+              <p>Output Log</p>
+            </div>
+          </div>
+          `;
+                    editor.addNode('aws', 1, 1, pos_x, pos_y, 'aws', {
+                        "db": {
+                            "dbname": '',
+                            "key": ''
+                        }
+                    }, aws);
+                    break;
+                case 'log':
+                    var log = `
+            <div>
+              <div class="title-box"><i class="fas fa-file-signature"></i> Save log file </div>
+            </div>
+            `;
+                    editor.addNode('log', 1, 0, pos_x, pos_y, 'log', {}, log);
+                    break;
+                case 'google':
+                    var google = `
+            <div>
+              <div class="title-box"><i class="fab fa-google-drive"></i> Google Drive save </div>
+            </div>
+            `;
+                    editor.addNode('google', 1, 0, pos_x, pos_y, 'google', {}, google);
+                    break;
+                case 'email':
+                    var email = `
+            <div>
+              <div class="title-box"><i class="fas fa-at"></i> Send Email </div>
+            </div>
+            `;
+                    editor.addNode('email', 1, 0, pos_x, pos_y, 'email', {}, email);
+                    break;
+
+                case 'template':
+                    var template = `
+            <div>
+              <div class="title-box"><i class="fas fa-code"></i> Template</div>
+              <div class="box">
+                Ger Vars
+                <textarea df-template></textarea>
+                Output template with vars
+              </div>
+            </div>
+            `;
+                    editor.addNode('template', 1, 1, pos_x, pos_y, 'template', {
+                        "template": 'Write your template'
+                    }, template);
+                    break;
+                case 'multiple':
+                    var multiple = `
+            <div>
+              <div class="box">
+                Multiple!
+              </div>
+            </div>
+            `;
+                    editor.addNode('multiple', 3, 4, pos_x, pos_y, 'multiple', {}, multiple);
+                    break;
+                case 'personalized':
+                    var personalized = `
+            <div>
+              Personalized
+            </div>
+            `;
+                    editor.addNode('personalized', 1, 1, pos_x, pos_y, 'personalized', {}, personalized);
+                    break;
+                case 'dbclick':
+                    var dbclick = `
+            <div>
+            <div class="title-box"><i class="fas fa-mouse"></i> Db Click</div>
+              <div class="box dbclickbox" ondblclick="showpopup(event)">
+                Db Click here
+                <div class="modal" style="display:none">
+                  <div class="modal-content">
+                    <span class="close" onclick="closemodal(event)">&times;</span>
+                    Change your variable {name} !
+                    <input type="text" df-name>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            `;
+                    editor.addNode('dbclick', 1, 1, pos_x, pos_y, 'dbclick', {
+                        name: ''
+                    }, dbclick);
+                    break;
+
+                default:
+            }
+        }
+
+        var transform = '';
+
+        function showpopup(e) {
+            e.target.closest(".drawflow-node").style.zIndex = "9999";
+            e.target.children[0].style.display = "block";
+            //document.getElementById("modalfix").style.display = "block";
+
+            //e.target.children[0].style.transform = 'translate('+translate.x+'px, '+translate.y+'px)';
+            transform = editor.precanvas.style.transform;
+            editor.precanvas.style.transform = '';
+            editor.precanvas.style.left = editor.canvas_x + 'px';
+            editor.precanvas.style.top = editor.canvas_y + 'px';
+            console.log(transform);
+
+            //e.target.children[0].style.top  =  -editor.canvas_y - editor.container.offsetTop +'px';
+            //e.target.children[0].style.left  =  -editor.canvas_x  - editor.container.offsetLeft +'px';
+            editor.editor_mode = "fixed";
+
+        }
+
+        function closemodal(e) {
+            e.target.closest(".drawflow-node").style.zIndex = "2";
+            e.target.parentElement.parentElement.style.display = "none";
+            //document.getElementById("modalfix").style.display = "none";
+            editor.precanvas.style.transform = transform;
+            editor.precanvas.style.left = '0px';
+            editor.precanvas.style.top = '0px';
+            editor.editor_mode = "edit";
+        }
+
+        function changeModule(event) {
+            var all = document.querySelectorAll(".menu ul li");
+            for (var i = 0; i < all.length; i++) {
+                all[i].classList.remove('selected');
+            }
+            event.target.classList.add('selected');
+        }
+
+        function changeMode(option) {
+
+            //console.log(lock.id);
+            if (option == 'lock') {
+                lock.style.display = 'none';
+                unlock.style.display = 'block';
+            } else {
+                lock.style.display = 'block';
+                unlock.style.display = 'none';
+            }
+
+        }
+    </script>
+    <script src="./assets/multiselectJS/multiselect.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

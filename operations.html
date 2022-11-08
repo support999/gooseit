@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/fontawesome//fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <title>Goose</title>
+</head>
+
+<body>
+    <!-- <nav class="navbar navbar-light bg-light" style="background-color: #e3f2fd;"> -->
+    <nav class="navbar navbar-light bg-light shadow shadow-sm sticky-top">
+        <div class="container-fluid">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" class="project-nav">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a class="nav-link text-dark" href="desktop.html">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a class="nav-link text-dark" href="extract.html">Dev-Environment</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a class="nav-link text-dark" href="workflow.html">Pipeline 1</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a class="nav-link" href="#">Task 1</a>
+                    </li>
+                </ol>
+            </nav>
+            <div class="d-flex">
+                <button class="btn btn-sm btn-success-light"><i class="fa-solid fa-play"></i><span class="ms-1">Run</span></button>
+                <button class="btn btn-sm btn-warning-light ms-3"><i class="fa-solid fa-tv"></i> <span class="ms-1">Monitor</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 border-end">
+                <input type="search" class="form-control form-control-sm my-2 workflow-search-fields" placeholder="Search...">
+                <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-dark">
+                    <a href="/" class="d-flex align-items-center mb-md-0 me-md-auto text-dark text-decoration-none w-100 justify-content-center border-bottom border-top py-1">
+                        <span class="fs-5 d-sm-inline">Subtasks</span>
+                    </a>
+                    <div class="column min-vh-100 w-100" id="items-container">
+                        <div class="item dragableBox position-relative" draggable="true" data-status="new">
+                            <span class="dragBoxIcon mx-sm-auto">
+                                <img src="./assets/images/logos/icons8-sql-file-48.png" class="ops-icon">
+                            </span>
+                            <span class="ms-1 d-none d-sm-inline workflow-name">SQL</span>
+                        </div>
+
+                        <div class="item dragableBox position-relative" draggable="true" data-status="new">
+                            <span class="dragBoxIcon mx-sm-auto">
+                                <img src="./assets/images/logos/icons8-python-48.png" class="ops-icon">
+                            </span>
+                            <span class="ms-1 d-none d-sm-inline workflow-name">Python</span>
+                        </div>
+
+                        <div class="item dragableBox position-relative" draggable="true" data-status="new">
+                            <span class="dragBoxIcon mx-sm-auto">
+                                <img src="./assets/images/logos/icons8-powershell-48.png" class="ops-icon">
+                            </span>
+                            <span class="ms-1 d-none d-sm-inline workflow-name">Powershell</span>
+                        </div>
+
+                        <hr>
+
+                        <div id="existing_workflows"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col column-right py-3" id="sectionsColumn">
+
+                <div class="column dragableSection">
+                    <p>Section 1</p>
+
+                    <button class="btn btn-sm btn-success-light  addSectionBtn" id="addSectionBtn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <!-- Properties Offcanvas Panel Starts -->
+                <div class="offcanvas offcanvas-end border-0 shadow" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="propertiesOffcanvas" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Properties</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <form id="properties-form">
+                            <table class="table fs-small properties-table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name : </th>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Enter Subtask Name" name="workflowName" id="workflowName">
+                                            <input type="hidden" name="" id="triggeringNodeId" name="triggeringNodeId">
+                                            <input type="hidden" name="" id="triggeringNodeType" name="triggeringNodeType">
+                                            <input type="hidden" name="" id="triggeringNodeStatus" name="triggeringNodeStatus">
+                                            <input type="hidden" name="" id="triggeringNodeDesc" name="triggeringNodeDesc">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Description : </th>
+                                        <td>
+                                            <textarea name="workflowDesc" class="form-control form-control-sm" placeholder="Enter Source Description...." id="workflowDesc"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Comment : </th>
+                                        <td>
+                                            <textarea class="form-control form-control-sm" placeholder="Enter Comment..." name="workflowComment" id="workflowComment"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="border-bottom-0 text-center">
+                                            <button class="btn btn-primary-light btn-sm w-50" type="submit">Save</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <!-- Properties Offcanvas Panel Ends -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menu Starts -->
+    <div id="contextMenu" class="context-menu" style="display: none">
+        <ul class="menu shadow">
+            <li class="share"><a href="#"><i class="fa-solid fa-arrow-rotate-right"></i><span class="ms-2">Refresh</span></a></li>
+            <li class="share"><a href="details.html"><i class="fa-solid fa-file-lines"></i><span class="ms-2">Details</span></a></li>
+            <li class="share" data-bs-toggle="modal" data-bs-target="#jobPublishModal"><a href="#"><i class="fa-solid fa-toggle-on"></i><span class="ms-2">Publish</span></a></li>
+            <li class="rename"><a href="#"><i class="fa-solid fa-toggle-off"></i><span class="ms-2">Disable</span></a></li>
+            <li class="link"><a href="#"><i class="fa-solid fa-play"></i><span class="ms-2">Execute</span></a></li>
+            <li class="copy"><a href="#"><i class="fa-solid fa-stop"></i><span class="ms-2">Stop</span></a></li>
+            <li class="paste"><a href="#"><i class="fa-solid fa-tv"></i><span class="ms-2">Monitor</span></a></li>
+            <li class="trash" onclick="deleteNode()"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i><span class="ms-2">Delete</span></a></li>
+        </ul>
+    </div>
+    <!-- Context Menu Ends -->
+
+    <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/fontawesome/fontawesome-free-6.1.1-web/js/all.min.js"></script>
+    <script src="./assets/jQuery/jquery-3.6.0.min.js"></script>
+    <script>
+        const items = document.querySelectorAll('.dragableBox')
+        const columns = document.querySelectorAll('.column')
+        console.log(columns)
+        items.forEach(item => {
+            item.addEventListener('dragstart', dragStart)
+            item.addEventListener('dragend', dragEnd)
+
+        });
+
+        columns.forEach(column => {
+            column.addEventListener('dragstart', dragStartColumn)
+            if (column.id != "items-container") {
+                column.addEventListener('dragover', dragOver);
+                column.addEventListener('dragenter', dragEnter);
+                column.addEventListener('dragleave', dragLeave);
+                column.addEventListener('drop', dragDrop);
+            }
+        });
+
+        var startColumn = null
+
+        function dragStartColumn(e) {
+            startColumn = this
+        }
+
+        function dragOver(e) {
+            e.preventDefault()
+                // console.log('drag over');
+        }
+
+        function dragEnter() {
+            // console.log('drag entered');
+        }
+
+        function dragLeave() {
+            // console.log('drag left');
+        }
+
+        let dragItem = null;
+
+        function dragStart(e) {
+            console.log('drag started');
+            dragItem = this;
+            console.log(dragItem)
+
+            setTimeout(() => this.className = 'invisible', 0)
+        }
+
+        function dragEnd() {
+            // console.log('drag ended');
+            this.className = 'item dragableBox bg-white position-relative'
+            startColumn = null
+                // dragItem = null
+        }
+
+        function dragDrop(ev) {
+            // console.log('drag dropped');
+            if (startColumn.id == 'items-container') {
+
+                var newItem = document.createElement("div")
+                newItem.className = "item dragableBox bg-white position-relative"
+                newItem.setAttribute("draggable", true)
+                console.log(dragItem.getElementsByTagName("img")[0].outerHTML)
+                if (dragItem.getAttribute("data-status") == "new") {
+                    newItem.setAttribute("data-status", "new")
+                    newItem.innerHTML = '<span class="dragBoxIcon mx-sm-auto">' + dragItem.getElementsByTagName("img")[0].outerHTML + '</span><span class="ms-1 d-none d-sm-inline workflow-name">' + dragItem.getElementsByClassName("workflow-name")[0].textContent + '</span><a class="containerLinkContainer" href="rules.html" target="_blank"><i class="fa-solid fa-link"></i></a><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">05<span class="visually-hidden">unread messages</span></span>'
+
+                } else if (dragItem.getAttribute("data-status") == "old") {
+                    console.log(dragItem)
+                    newItem.setAttribute("data-status", "old")
+                    newItem.innerHTML = '<span class="dragBoxIcon mx-sm-auto"><img src="./assets/images/logos/icons8-operation-48.png" class="ops-icon"></span><span class="ms-1 d-none d-sm-inline workflow-name">' + dragItem.getElementsByClassName("workflow-name")[0].textContent + '</span><a class="containerLinkContainer" href="rules.html" target="_blank"><i class="fa-solid fa-link"></i></a><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+<span class="visually-hidden">unread messages</span></span>'
+
+                    setTimeout(() => dragItem = null, 5000)
+                }
+
+
+                this.append(newItem)
+                newItem.addEventListener('dragstart', dragStart)
+                newItem.addEventListener('dragend', dragEnd)
+                newItem.addEventListener("dblclick", openPropertiesPanel)
+                newItem.oncontextmenu = rightClick;
+            } else {
+                console.log("added")
+                dragItem.classList.add("position-relative")
+                console.log(dragItem)
+                this.append(dragItem);
+            }
+        }
+
+        function updateTriggeredNodeDetailsOnOffcanvas(nodeStatus, nodeName) {
+            document.getElementById("triggeringNodeStatus").value = nodeStatus
+            document.getElementById("workflowName").value = nodeName
+        }
+
+        var bsOffcanvas = new bootstrap.Offcanvas($('#propertiesOffcanvas'))
+        var targetOffcanvas = null
+
+        function openPropertiesPanel() {
+            console.log("double clicked")
+            console.log(this)
+            $('.dragableBox ').removeClass("selected")
+            this.classList.add("selected");
+            targetOffcanvas = this
+            bsOffcanvas.show()
+            nodeStatus = this.getAttribute("data-status")
+            nodeName = this.getElementsByClassName("workflow-name")[0].textContent
+
+            updateTriggeredNodeDetailsOnOffcanvas(nodeStatus, nodeName)
+        }
+
+        function processForm(e) {
+            if (e.preventDefault) e.preventDefault();
+            const formData = [...document.querySelector('#properties-form').elements]
+                .filter(element => element.name !== 'submit') // this is not a form data...
+                .reduce((acc, input) => ({...acc,
+                    [input.name]: input.value
+                }), {})
+                /* do what you want with the form */
+            console.log("Form submitted")
+            console.log(formData)
+            console.log(document.getElementById('triggeringNodeStatus').value)
+            if (document.getElementById('triggeringNodeStatus').value === "new" && formData.workflowName != '') {
+
+                var newItem = document.createElement("div")
+                newItem.className = "item dragableBox bg-white"
+                newItem.setAttribute("draggable", true)
+                newItem.setAttribute("data-status", "old")
+                newItem.innerHTML += '<span class="dragBoxIcon mx-sm-auto"><img src="./assets/images/logos/icons8-operation-48.png" class="ops-icon"></span><span class="ms-1 d-none d-sm-inline workflow-name">' + formData.workflowName + '</span>'
+                document.getElementById("existing_workflows").append(newItem)
+                newItem.addEventListener('dragstart', dragStart)
+                newItem.addEventListener('dragend', dragEnd)
+                    // console.log($('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').innerHTML = formData.connectionName)
+                    // $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').text(formData.connectionName)
+                    // $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node div').attr('data-connection-status', "old")
+
+            } else if (document.getElementById('triggeringNodeStatus').value === "old" && formData.workflowName != '') {
+                $('.drawflow .parent-node #node-' + document.getElementById('triggeringNodeId').value + ' .drawflow_content_node .title-box .px-2').text(formData.workflowName)
+            }
+            targetOffcanvas.getElementsByClassName('workflow-name')[0].textContent = formData.workflowName
+            targetOffcanvas.setAttribute("data-status", "old")
+            document.getElementById("properties-form").reset()
+            $('.dragableBox ').removeClass("selected")
+            bsOffcanvas.hide()
+                // You must return false to prevent the default form behavior
+            return false;
+        }
+
+        var propertiesForm = document.getElementById('properties-form');
+        propertiesForm.addEventListener("submit", processForm);
+
+        function removeSection() {
+            currentNumberOfColumns = document.getElementsByClassName('dragableSection')
+            currentNumberOfConnectors = document.getElementsByClassName('connector-container')
+            console.log(currentNumberOfColumns)
+
+            console.log(currentNumberOfColumns[currentNumberOfColumns.length - 1])
+
+            newAddBtn = document.createElement("button")
+            newAddBtn.className = "btn btn-sm btn-success-light addSectionBtn"
+            newAddBtn.setAttribute("id", "addSectionBtn")
+            newAddBtn.addEventListener("click", addSection)
+            newAddBtn.innerHTML = '<i class="fa-solid fa-plus"></i>'
+
+            newRemoveBtn = document.createElement("button")
+            newRemoveBtn.className = "btn btn-sm btn-danger-light removeSectionBtn"
+            newRemoveBtn.setAttribute("id", "removeSectionBtn")
+            newRemoveBtn.addEventListener("click", removeSection)
+            newRemoveBtn.innerHTML = '<i class="fa-solid fa-minus"></i>'
+
+            if (currentNumberOfColumns.length >= 2) {
+                currentNumberOfColumns[currentNumberOfColumns.length - 1].remove()
+                currentNumberOfConnectors[currentNumberOfConnectors.length - 1].remove()
+
+                console.log(currentNumberOfColumns[currentNumberOfColumns.length - 1])
+                currentNumberOfColumns[currentNumberOfColumns.length - 1].append(newAddBtn)
+                if (currentNumberOfColumns.length >= 2) {
+                    currentNumberOfColumns[currentNumberOfColumns.length - 1].append(newRemoveBtn)
+                }
+            }
+        }
+
+        function addSection() {
+            this.remove()
+            if (document.getElementById('removeSectionBtn')) {
+                // document.getElementById('removeSectionBtn').remove()
+            }
+
+            var arrowDiv = document.createElement("div")
+            arrowDiv.className = "text-center connector-container"
+            arrowDiv.innerHTML = '<img src="./assets/images/logos/icons8-arrow-simple-line (1)/icons8-arrow-50.png" alt="" class="connector-arrow-blue">'
+
+            var newSection = document.createElement("div")
+            newSection.className = "column dragableSection position-relative"
+            currentNumberOfColumns = document.getElementsByClassName('dragableSection')
+
+            newAddBtn = document.createElement("button")
+            newAddBtn.className = "btn btn-sm btn-success-light addSectionBtn"
+            newAddBtn.setAttribute("id", "addSectionBtn")
+            newAddBtn.addEventListener("click", addSection)
+            newAddBtn.innerHTML = '<i class="fa-solid fa-plus"></i>'
+            newSection.innerHTML = '<p>Section ' + (currentNumberOfColumns.length + 1) + '</p>'
+
+            newRemoveBtn = document.createElement("button")
+            newRemoveBtn.className = "btn btn-sm btn-danger-light removeSectionBtn"
+            newRemoveBtn.setAttribute("id", "removeSectionBtn")
+            newRemoveBtn.addEventListener("click", removeSection)
+            newRemoveBtn.innerHTML = '<i class="fa-solid fa-minus"></i>'
+
+
+            newSection.append(newAddBtn)
+            newSection.append(newRemoveBtn)
+            document.getElementById('sectionsColumn').append(arrowDiv)
+            document.getElementById('sectionsColumn').append(newSection)
+
+            newSection.addEventListener('dragstart', dragStartColumn)
+            newSection.addEventListener('dragover', dragOver);
+            newSection.addEventListener('dragenter', dragEnter);
+            newSection.addEventListener('dragleave', dragLeave);
+            newSection.addEventListener('drop', dragDrop);
+        }
+        document.getElementById('addSectionBtn').addEventListener("click", addSection)
+
+
+        document.onclick = hideMenu;
+        // document.oncontextmenu = rightClick;
+
+        function hideMenu() {
+            document.getElementById("contextMenu")
+                .style.display = "none"
+            $('.dragableBox ').removeClass("selected")
+        }
+
+        var contextMenuNode = null
+
+        function rightClick(e) {
+            e.preventDefault();
+            contextMenuNode = this
+            this.classList.add("selected");
+            if (document.getElementById("contextMenu").style.display == "block") {
+                hideMenu();
+            } else {
+                var menu = document.getElementById("contextMenu")
+                menu.style.display = 'block';
+                menu.style.left = e.pageX + "px";
+                menu.style.top = e.pageY + "px";
+            }
+        }
+
+        function deleteNode() {
+            contextMenuNode.remove()
+            contextMenuNode = null
+        }
+    </script>
+</body>
+
+</html>
+
+</html>

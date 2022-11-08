@@ -1,0 +1,258 @@
+.parent-drawflow {
+    display: flex;
+    overflow: hidden;
+    touch-action: none;
+    outline: none;
+}
+
+.drawflow {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    user-select: none;
+    perspective: 0;
+}
+
+.drawflow .parent-node {
+    position: relative;
+}
+
+.drawflow .drawflow-node {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background: cyan;
+    width: 160px;
+    min-height: 40px;
+    border-radius: 4px;
+    border: 2px solid black;
+    color: black;
+    z-index: 2;
+    padding: 15px;
+}
+
+.drawflow .drawflow-node.selected {
+    background: red;
+}
+
+.drawflow .drawflow-node:hover {
+    cursor: move;
+}
+
+.drawflow .drawflow-node .inputs,
+.drawflow .drawflow-node .outputs {
+    width: 0px;
+}
+
+.drawflow .drawflow-node .drawflow_content_node {
+    width: 100%;
+    display: block;
+}
+
+.drawflow .drawflow-node .input,
+.drawflow .drawflow-node .output {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid black;
+    cursor: crosshair;
+    z-index: 1;
+    margin-bottom: 5px;
+}
+
+.drawflow .drawflow-node .input {
+    /* left: -27px;
+    top: 2px; */
+    background: yellow;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.drawflow .drawflow-node .output {
+    /* right: -3px;
+    top: 2px; */
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.drawflow svg {
+    z-index: 0;
+    position: absolute;
+    overflow: visible !important;
+}
+
+.drawflow .connection {
+    position: absolute;
+    pointer-events: none;
+    aspect-ratio: 1 / 1;
+}
+
+.drawflow .connection .main-path {
+    fill: none;
+    stroke-width: 5px;
+    stroke: steelblue;
+    pointer-events: all;
+}
+
+.drawflow .connection .main-path:hover {
+    stroke: #1266ab;
+    cursor: pointer;
+}
+
+.drawflow .connection .main-path.selected {
+    stroke: #43b993;
+}
+
+.drawflow .connection .point {
+    cursor: move;
+    stroke: black;
+    stroke-width: 2;
+    fill: white;
+    pointer-events: all;
+}
+
+.drawflow .connection .point.selected,
+.drawflow .connection .point:hover {
+    fill: #1266ab;
+}
+
+.drawflow .main-path {
+    fill: none;
+    stroke-width: 5px;
+    stroke: steelblue;
+}
+
+.drawflow-delete {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: black;
+    color: white;
+    z-index: 4;
+    border: 2px solid white;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.drawflow>.drawflow-delete {
+    margin-left: -15px;
+    margin-top: 15px;
+}
+
+.parent-node .drawflow-delete {
+    right: -15px;
+    top: -15px;
+}
+
+.source-destination-tabs.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.source-destination-tabs.nav-tabs .nav-link {
+    width: calc(100% / 2);
+    text-align: center;
+    color: #808292;
+    border-width: 0;
+    border-bottom: 4px solid #fff;
+}
+
+.source-destination-tabs.nav-tabs .nav-link:hover {
+    border-color: #fff;
+}
+
+.source-destination-tabs.nav-tabs .nav-item.show .nav-link,
+.source-destination-tabs.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    /* border-width: 0; */
+    border-color: #fff;
+    border-bottom: 4px solid #217CE8 !important;
+}
+
+.dragBoxIcon {
+    width: 36px;
+    height: 36px;
+    background-color: #F1F4FC;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offcanvas-end {
+    top: 66px !important;
+}
+
+.fs-small {
+    font-size: 14px;
+}
+
+.properties-table tr th {
+    text-align: right;
+}
+
+.w-70px {
+    width: 70px !important;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0 !important;
+}
+
+.nav-link {
+    padding: 0.25rem 1rem !important;
+}
+
+.source-destination-search-field {
+    width: calc(100% - 2rem) !important;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+.modal-connection {
+    font-size: 13px;
+}
+
+.modal-connection table tr th:first-child,
+.modal-connection table tr td:first-child {
+    text-align: center;
+}
+
+.multiselect-btns-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.multiselect-btns {
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50% !important;
+}
+
+.width-100px {
+    width: 108px;
+}
+
+#destinationSchemaInput {
+    max-width: 300px;
+}
+
+#monitorSection{
+    display: none;
+}
